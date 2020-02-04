@@ -13,8 +13,8 @@ pipeline {
 
     stage('configure') {
     	steps {
-    		withCredentials([file(credentialsId: 'api-niconico-env', variable: 'dot-env')]) {
-           sh '''cp \$dot-env ./.env
+    		withCredentials([file(credentialsId: 'api-niconico-env', variable: 'ENV_FILE')]) {
+           sh '''cp $ENV_FILE .env
 php artisan key:generate
 php artisan config:cache
            '''
